@@ -1,0 +1,748 @@
+@charset "utf-8";
+
+/* ==========
+font
+==========*/
+@font-face {
+  font-family: "LINE Seed JP_OTF"; /* 任意のフォント名 */
+  font-style: normal;
+  /* font-weight: 400; */
+  src: url("/fonts/LINESeedJP_OTF_Bd.woff") format("woff"),
+    url("/fonts/LINESeedJP_OTF_Eb.woff") format("woff"),
+    url("/fonts/LINESeedJP_OTF_Rg.woff") format("woff"),
+    url("/fonts/LINESeedJP_OTF_Th.woff") format("woff");
+}
+
+/* ==========
+common
+==========*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fffeee;
+  display: flex;
+  /* width: 6000px; */
+  font-family: "LINE Seed JP_OTF", sans-serif;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 950px;
+  height: 100vh;
+  padding-top: 100px;
+}
+
+.sec_inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 100px);
+}
+
+.sec_contents {
+  height: 670px;
+}
+
+.sec_contents-center {
+  height: auto;
+}
+
+/* FB追加部分 */
+.spOnly {
+  display: none !important;
+}
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  section {
+    width: 390px;
+    padding: 0 65px;
+  }
+  .spOnly {
+    display: block !important;
+  }
+}
+
+/* ==========
+loading
+==========*/
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background: #fffeee;
+}
+.loading_box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading__circle {
+  display: inline-block;
+  position: relative;
+  width: 30px;
+  height: 57px;
+}
+.loading__circle:nth-child(2)::before {
+  animation-delay: 0.2s;
+}
+.loading__circle:nth-child(3)::before {
+  animation-delay: 0.4s;
+}
+
+.loading__circle:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ec8570;
+  content: "";
+  animation: bounce 0.8s alternate infinite ease;
+  -webkit-animation: bounce 0.8s alternate infinite ease;
+  transform-origin: 50%;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    top: 30px;
+    transform: scaleX(2);
+    height: 5px;
+    border-radius: 60px 60px 20px 20px;
+  }
+  35% {
+    transform: scaleX(1);
+    height: 15px;
+    border-radius: 50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    top: 30px;
+    transform: scaleX(2);
+    height: 5px;
+    border-radius: 60px 60px 20px 20px;
+  }
+  35% {
+    transform: scaleX(1);
+    height: 15px;
+    border-radius: 50%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .loading__circle {
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 37px;
+  }
+  .loading__circle:before {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* 横スクロールエリアをゆっくり表示 */
+[data-scroll-container] {
+  opacity: 0;
+  transition: opacity 7.5s ease; /* ← ここでふわっと */
+}
+
+[data-scroll-container].show {
+  opacity: 1;
+}
+
+
+/* つなひき縮小 */
+.animation-box img {
+  width: auto;
+  height: 100vh;
+  position: fixed;
+  z-index: 10001;
+  animation: shrink 2s ease-in-out 3.5s forwards;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.25);
+    transform-origin: bottom left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .animation-box img {
+    width: auto;
+    height: 100vh;
+    animation: sp_shrink 2s ease-in-out 2s forwards;
+  }
+}
+@keyframes sp_shrink {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.25);
+    transform-origin: bottom left;
+  }
+}
+.animation-box {
+  opacity: 1;
+  transform: translateX(0);
+  transition: 1s ease; /* ← フェード速度 */
+}
+
+.animation-box.hide {
+  transform: translateX(-300px);
+  opacity: 0;
+  pointer-events: none; /* ← 当たり判定も消したい場合 */
+}
+
+/* ==========
+heading
+==========*/
+h2 {
+  display: flex;
+  position: relative;
+  padding-left: 30px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+h2::before {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  content: "";
+  background: #f4cf4f;
+  border-radius: 50%;
+  left: 0;
+}
+
+/* ==========
+button
+==========*/
+button {
+  color: #fff;
+  background-color: #267f9d;
+  border: none;
+  width: 150px;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: large;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ec8570;
+  transition: 0.8s;
+}
+
+/* ==========
+header
+==========*/
+#header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9998;
+}
+
+.header_inner h1 {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  width: 180px;
+}
+
+/* ==========
+logo-area
+==========*/
+#logo-area .logo-img-main {
+  width: 420px;
+}
+
+@media screen and (max-width: 768px) {
+  #logo-area .logo-img-main {
+    width: 260px;
+  }
+}
+
+/* ==========
+concept
+==========*/
+.concept_circle {
+  font-weight: bold;
+  background-color: #f4cf4f;
+  border-radius: 50%;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 62px;
+  margin: -10px;
+}
+
+.ue {
+  vertical-align: 15%;
+}
+
+.shita {
+  vertical-align: -10%;
+}
+
+#concept p {
+  text-align: center;
+}
+
+.concept_title {
+  font-size: 43px;
+}
+
+.concept_main {
+  margin-top: 50px;
+  line-height: 1.5;
+  font-size: 22px;
+}
+
+@media screen and (max-width: 768px) {
+  .concept_title {
+    font-size: 26px;
+  }
+  .concept_main {
+    font-size: 14px;
+  }
+  .concept_circle {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+}
+
+/* ==========
+service
+==========*/
+.service-lists {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+
+.service-lists p {
+  margin-left: 20px;
+}
+
+#service p {
+  font-size: 18px;
+  line-height: 2;
+}
+
+.service_img {
+  width: 300px;
+  box-shadow: 0 0 8px #cccccc;
+}
+
+@media screen and (max-width: 768px) {
+  #service p {
+    font-size: 14px;
+  }
+  .service_img {
+    width: 190px;
+  }
+}
+
+/* ==========
+profile
+==========*/
+.nigaoe_img {
+  width: 310px;
+  margin-left: auto;
+  position: relative;
+}
+
+.nigaoe_img p {
+  position: absolute;
+  top: 70%;
+  left: -15%;
+  margin: 0; /*余計な隙間を除く*/
+  color: #997668;
+  background: #f4cf4f;
+  font-size: 18px;
+  line-height: 1;/*行高は1に*/
+  transform: rotate(-15deg);
+  padding: 10px 10px 10px 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  letter-spacing: 0.1em;
+}
+
+.nigaoe_img p:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 20px 0px 20px 10px;
+  border-color: transparent transparent transparent #fffeee;
+  border-style: solid;
+}
+
+.my_profile {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 450px;
+  margin: 45px 0;
+  font-size: 18px;
+  line-height: 1.5;
+  white-space: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .nigaoe_img {
+    width: 200px;
+  }
+  .my_profile {
+    font-size: 14px;
+  }
+}
+
+/* ==========
+works
+==========*/
+.works-lists li {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+
+.works-lists img {
+  width: 300px;
+  box-shadow: 10px 10px #cccccc;
+}
+
+.works-lists p {
+  margin-left: 20px;
+  line-height: 2;
+}
+
+@media screen and (max-width: 768px) {
+  #works {
+    width: 1430px;
+  }
+  .works-lists ul {
+    display: flex;
+    gap: 130px;
+  }
+  .works-lists li {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 390px;
+  }
+}
+
+/* ==========
+contact
+==========*/
+#contact .sec_contents {
+  width: 60%;
+}
+
+/* お問い合わせフォーム */
+form {
+  padding: 20px 0;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  max-width: 485px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: rgb(225, 225, 225);
+}
+
+textarea {
+  resize: vertical;
+  height: 120px;
+}
+
+/* ==========
+footer
+==========*/
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  height: 100%;
+  right: 0;
+  background-color: #267f9d;
+  z-index: 9999;
+}
+
+.footer_nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.footer_nav li {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin-bottom: 10px;
+  margin-left: -50px;
+  padding: 10px 20px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background-color: #267f9d;
+}
+
+.footer-nav_item:last-child {
+  background-color: #ec8570;
+}
+
+.footer_nav p {
+  color: #fff;
+  display: flex;
+  position: relative;
+  padding-left: 30px;
+  align-items: center;
+}
+
+.footer_nav p::before {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  content: "";
+  background: #f4cf4f;
+  border-radius: 50%;
+  left: 0;
+}
+
+.footer_nav a {
+  font-size: 20px;
+}
+
+.copyright {
+  color: #fff;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin-top: 20px;
+}
+
+.copyright-symbol {
+  display: inline-block; /* インライン要素を回転させるために必須 */
+  transform: rotate(90deg);
+  transform-origin: center; /* 回転の中心を要素の中央に設定（デフォルト） */
+}
+
+.icon {
+  display: inline-block;
+  margin: 3px 0;
+  width: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  #footer {
+    animation: none;
+  }
+  .footer_nav {
+    padding-top: 40px;
+  }
+  .copyright {
+    margin: 10px auto;
+  }
+}
+
+/* ==========
+pagetop
+==========*/
+#pagetop {
+  position: fixed;
+  bottom: 0;
+  right: 100px;
+  width: 25%;
+  z-index: 10000;
+}
+
+.pagetop_contents a {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  background: #ec8570;
+  color: #fff;
+  right: 10px;
+  bottom: 10px;
+  transition: 0.8s;
+}
+
+.pagetop_contents a span {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 80px;
+  text-align: center;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.pagetop_contents a:hover {
+  opacity: 0.8;
+}
+
+.pagetop_contents {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.8s ease;
+}
+.pagetop_contents.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========
+hamburger menu
+==========*/
+@media screen and (max-width: 768px) {
+  #footer {
+    display: none;
+  }
+  .footer_nav {
+    padding-top: 40px;
+  }
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10000;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #117391;
+    cursor: pointer;
+  }
+  .hamburger span {
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+    transition: 0.3s;
+  }
+  .hamburger span::before,
+  .hamburger span::after {
+    position: absolute;
+    width: 26px;
+    height: 3px;
+    border-radius: 3px;
+    background: #ffffff;
+    content: "";
+    transition: 0.3s;
+  }
+  .hamburger span::before {
+    bottom: 10px;
+  }
+  .hamburger span::after {
+    top: 10px;
+  }
+  .open {
+    background-color: #f2f2f2;
+  }
+  .open span {
+    background-color: transparent;
+  }
+  .open span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+    background-color: #117391;
+  }
+  .open span::after {
+    top: 0;
+    transform: rotate(-45deg);
+    background-color: #117391;
+  }
+
+  .sp-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100vh;
+    background: #ddf4ec;
+  }
+  .sp-nav .nav__list {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .sp-nav .nav__list a {
+    color: #141414;
+  }
+  .sp-nav .reserve-btn a {
+    border: 1px solid #141414;
+  }
+}
+
+/* フェードテスト★１★ */
+.inview1 {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 0.8s;
+  transition-delay: 0.1s;
+}
+
+.inview1.show {
+  opacity: 1;
+  transform: translateX(0px);
+}
+/* フェードテスト★１★ここまで */

@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+/* ==============================
+works-page
+==============================*/
+.works-page {
+  width: 100%;
+}
+.works-page__container {
+  display: flex;
+}
+.works-page h2 {
+  align-items: flex-start;
+  width: 530px;
+  margin: 0 120px;
+  padding: 12vh 0 12vh 90px;
+  font-size: clamp(24px, 10vw, 62px);
+}
+.works-page h2::before {
+  width: 60px;
+  height: 60px;
+}
+.works-thumbnail-lists {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 1500px;
+  height: 100vh;
+}
+.works-thumbnail-lists ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: 900px;
+  margin-right: 100px;
+  gap: 1rem; /*flexがないと効かない*/
+}
+.works-thumbnail-lists li {
+  width: 45.3%;
+  max-width: 340px;
+  aspect-ratio: 353/286;
+}
+
+.thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+h3 {
+    padding-bottom: 6px;
+    border-bottom: 2.5px solid #f4cf4f;
+    max-width: max-content;
+    margin: 30px auto;
+}
+
+/* h3::after {
+  content: "";
+  border: 2.5px solid #f4cf4f;
+  display: flex;
+  flex-direction: column;
+} */
+
+
+/* ==============================
+modal
+==============================*/
+
+.remodal {
+  position: relative;
+  padding: 25px;
+  background-color: #fffeee;
+}
+.remodal img {
+  width: 90%;
+  height: auto;
+  vertical-align: top;
+}
+
+.remodal p {
+    /* display: flex;
+    flex-wrap: wrap; */
+    margin: 30px auto;
+    max-width: 90%;
+    line-height: 1.5;
+    white-space: wrap;
+}
+
+.remodal-cancel {
+  color: #fff;
+  background: #117391;
+  width: 70%;
+}
+
+.remodal-cancel:hover {
+  background: #70a7b2;
+}
+
+
+/* ==============================
+box-shadow
+==============================*/
+
+.shadow{
+  box-shadow: 10px 10px #cccccc;
+  transition: box-shadow 0.2s ease 0s;
+}
+
+.shadow:hover{
+  box-shadow:10px 10px #999999;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .works-thumbnail-lists li {
+    max-width: 200px;
+    height: auto;
+}
+}
