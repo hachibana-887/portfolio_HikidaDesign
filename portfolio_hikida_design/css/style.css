@@ -282,6 +282,12 @@ header
   width: 180px;
 }
 
+@media screen and (max-width: 768px) {
+  .header_inner h1 {
+    visibility: hidden;
+  }
+}
+
 /* ==========
 logo-area
 ==========*/
@@ -345,6 +351,7 @@ concept
   height: 30px;
   text-align: center;
   line-height: 30px;
+  padding: 7px 7px;
 }
 }
 
@@ -480,6 +487,8 @@ contact
 form {
   padding: 20px 0;
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
@@ -503,6 +512,19 @@ textarea {
 textarea {
   resize: vertical;
   height: 120px;
+  margin-bottom: 25px;
+}
+
+/* サンクスページ */
+.thanks-comment {
+  margin: 20px 0;
+  padding: 10px 20px;
+  border: dashed 1px #267f9d;
+  min-height: 60vh;
+}
+
+.thanks-comment p {
+  margin: 20px 0;
 }
 
 /* ==========
@@ -734,7 +756,7 @@ hamburger menu
 }
 
 /* フェードテスト★１★ */
-.inview1 {
+/* .inview1 {
   opacity: 0;
   transform: translateX(20px);
   transition: 0.8s;
@@ -744,5 +766,5 @@ hamburger menu
 .inview1.show {
   opacity: 1;
   transform: translateX(0px);
-}
+} */
 /* フェードテスト★１★ここまで */

@@ -88,7 +88,6 @@
                 <img src="./images/service_graphic.jpg" alt="graphic" />
               </div>
               <p>
-                【対応可能】<br />
                 チラシ／リーフレット<br />
                 名刺／ロゴ／イラスト
               </p>
@@ -98,13 +97,12 @@
                 <img src="./images/service_web.jpg" alt="web" />
               </div>
               <p>
-                【対応可能】<br />
                 各種SNS投稿画像／バナー<br />
                 LP／HP
               </p>
             </nav>
             <p>
-              スキル<br />
+              【スキル】<br />
               デザイン：Illustrator／Photoshop<br />
               イラスト：Procreate／CLIP STUDIO<br />
               コーディング：HTML／CSS／JavaScript
@@ -186,14 +184,16 @@
               お仕事のご相談、ポートフォリオのご感想など<br />
               お気軽にご連絡ください。<br />
               <br />
-              InstagramのDMでも受け付けております。
+              Instagram、XのDMでも受け付けております。
             </p>
-            <form>
+            <form
+            action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfw4b3_LUWNTSwRN_lRJG9uvU1KRZmBz3H_ZT0YKDZzrDQjgw/formResponse"
+            method="POST" target="hidden_iframe" onsubmit="submitted=true;" class="c-form">
               <label for="name">お名前:</label>
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="entry.1577999729"
                 placeholder="引田 一郎"
                 required
               />
@@ -202,7 +202,7 @@
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="entry.1848413463"
                 placeholder="xxx@email.com"
                 required
               />
@@ -210,12 +210,13 @@
               <label for="message">お問い合わせ内容:</label>
               <textarea
                 id="message"
-                name="message"
+                name="entry.1289826709"
                 rows="5"
                 required
               ></textarea>
+
+              <button class="btn_send" type="submit">送信</button>
             </form>
-            <button class="btn_send" type="submit">送信</button>
           </div>
         </div>
       </section>
@@ -261,10 +262,10 @@
             </a>
           </li>
         </ul>
-        <a class="icon" href="https://www.instagram.com/hikida_design/"
+        <a class="icon" href="https://www.instagram.com/hikida_design/" target=”_blank”
           ><img src="./images/icon_instagram.png" alt="インスタアカウント"
         /></a>
-        <a class="icon" href="https://x.com/hikida_design"
+        <a class="icon" href="https://x.com/hikida_design" target=”_blank”
           ><img src="./images/icon_x.png" alt="Xアカウント"
         /></a>
         <a class="icon"><img src="./images/icon_mail.png" alt="メール" /></a>
@@ -287,6 +288,17 @@
 
     <!-- ▼ script読み込み -->
     <script src="./js/script.js"></script>
+
+    <!-- サンクスページ -->
+    <script type="text/javascript">
+    let submitted = false;
+    </script>
+    <iframe
+      name="hidden_iframe"
+      id="hidden_iframe"
+      style="display: none"
+      onload="if(submitted){window.location='thanks.html';}">
+    </iframe>
 
   </body>
 </html>

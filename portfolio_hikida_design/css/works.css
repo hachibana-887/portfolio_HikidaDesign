@@ -9,6 +9,7 @@ works-page
 .works-page__container {
   display: flex;
 }
+
 .works-page h2 {
   align-items: flex-start;
   width: 530px;
@@ -65,6 +66,24 @@ h3 {
 } */
 
 
+@media screen and (max-width: 768px) {
+
+  .works-page h2::before {
+    width: 40px;
+    height: 40px;
+  }
+
+  .works-thumbnail-lists ul {
+  height: 600px;
+  }
+
+  .works-thumbnail-lists li {
+    max-width: 200px;
+    height: auto;
+    margin: auto;
+  }
+}
+
 /* ==============================
 modal
 ==============================*/
@@ -111,13 +130,4 @@ box-shadow
 
 .shadow:hover{
   box-shadow:10px 10px #999999;
-}
-
-
-@media screen and (max-width: 768px) {
-
-  .works-thumbnail-lists li {
-    max-width: 200px;
-    height: auto;
-}
 }
