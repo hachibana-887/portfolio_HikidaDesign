@@ -13,9 +13,9 @@ works-page
 .works-page h2 {
   align-items: flex-start;
   width: 530px;
-  margin: 0 120px;
-  padding: 12vh 0 12vh 90px;
+  margin: 12vh 160px 12vh 90px;
   font-size: clamp(24px, 10vw, 62px);
+  padding-left: clamp(35px, 15vw, 80px); /* beforeとの間隔を微調整 */
 }
 .works-page h2::before {
   width: 60px;
@@ -68,9 +68,14 @@ h3 {
 
 @media screen and (max-width: 768px) {
 
+  .works-page h2 {
+    width: 400px;
+    margin: 12vh 100px 12vh 90px;
+  }
+
   .works-page h2::before {
-    width: 40px;
-    height: 40px;
+    width: clamp(24px, 10vw, 62px);
+    height: clamp(24px, 10vw, 62px);
   }
 
   .works-thumbnail-lists ul {
