@@ -525,10 +525,10 @@ textarea {
 
 /* サンクスページ */
 .thanks-comment {
-  margin: 50px 50px;
+  margin: 50px auto;
   padding: 20px 20px;
-  border: dashed 1px #267f9d;
-  border-radius: 10px;
+  /* border: dashed 1px #267f9d;
+  border-radius: 10px; */
   text-align: center;
 }
 
@@ -536,6 +536,22 @@ textarea {
   margin: 20px 0;
   line-height: 2;
   font-size: 18px;
+}
+
+.sns_icon {
+  display: flex;
+  justify-content: center;
+}
+
+.index_button {
+  color: #fff;
+  background-color: #ee614b;
+  border: none;
+  margin-top: 20px;
+  width: 150px;
+  border-radius: 50px;
+  font-size: large;
+  cursor: pointer;
 }
 
 /* ==========
